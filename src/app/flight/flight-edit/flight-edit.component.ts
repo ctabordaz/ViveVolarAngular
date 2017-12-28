@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import {Flight} from '../../models/flight';
 import { FlightService } from '../../services/flight/flight.service';
+import { MessageService } from '../../services/message/message.service';
 
 @Component({
   selector: 'app-flight-edit',
@@ -13,7 +14,7 @@ import { FlightService } from '../../services/flight/flight.service';
 export class FlightEditComponent implements OnInit {
  
   public flightForm: FormGroup;
-  constructor(private flightService: FlightService) { }
+  constructor(private flightService: FlightService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.initForm();
@@ -40,7 +41,11 @@ export class FlightEditComponent implements OnInit {
   }
 
   onSubmit() {
-      this.flightService.addFlight(this.flightForm.value).subscribe(s => console.log(s));
+      this.flightService.addFlight(this.flightForm.value).subscribe(data => {
+        console.log("done!");
+        this.messageService.recive(data);
+
+      });
   }
 
 }

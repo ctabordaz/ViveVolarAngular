@@ -13,6 +13,7 @@ import {FlightListComponent} from './flight/flight-list/flight-list.component'
 import {AppRoutingModule} from "./routing/app-routing.module";
 
 import {FlightService} from "./services/flight/flight.service";
+import { MessageService } from './services/message/message.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {FlightService} from "./services/flight/flight.service";
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [FlightService],
+  providers: [FlightService,
+              MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

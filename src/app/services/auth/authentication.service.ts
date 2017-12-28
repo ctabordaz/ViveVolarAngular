@@ -14,6 +14,11 @@ export class AuthenticationService {
   login(username: string, password: string) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');    
     return this.http.post(this.config.apiUrl + '/user/auth', { email: username, password: password },{headers:headers});
-}
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+  } 
 
 }

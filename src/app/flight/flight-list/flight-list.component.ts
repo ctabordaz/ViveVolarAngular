@@ -3,6 +3,7 @@ import { FlightService } from '../../services/flight/flight.service';
 import { Flight } from '../../models/flight';
 import { Subscription } from 'rxjs/Subscription';
 import { MessageService } from '../../services/message/message.service';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
   selector: 'app-flight-list',
@@ -13,12 +14,15 @@ export class FlightListComponent implements OnInit , OnDestroy{
   
   flights: Flight[];
   subscription : Subscription;
-  constructor(private flightService: FlightService, private messageService: MessageService) { }
+  constructor(private flightService: FlightService, private messageService: MessageService, private alertService: AlertService) { }
 
   ngOnInit() {
     this.flightService.getFlights()
-    .subscribe(data => this.flights = data
+    .subscribe(data =>{ 
+        this.flights = data
+      }
       , (error: any)=>{
+        this.alertService.error(error._body);
         console.log(error);
       });
     
@@ -26,13 +30,15 @@ export class FlightListComponent implements OnInit , OnDestroy{
       (flight:any) =>{
       this.flights.push(flight);
       }, (error: any)=>{
+        this.alertService.error(error._body);
         console.log(error);
       });
   
+
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  ngOnDestroy() {
+    
   }
 
   onNewFlight(){
@@ -43,8 +49,12 @@ export class FlightListComponent implements OnInit , OnDestroy{
     this.flightService.deleteFlight(flightNumber).subscribe(
       data => {
         this.flights.splice(index,1);
+        this.alertService.success('Vuelo eliminado', true);
       }, 
-      error => console.log("no deleted"));
+      error => {
+        console.log("no deleted");
+        this.alertService.error(error._body);
+      })};
   }
 
 }

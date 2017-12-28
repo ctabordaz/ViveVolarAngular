@@ -14,6 +14,10 @@ import {AppRoutingModule} from "./routing/app-routing.module";
 
 import {FlightService} from "./services/flight/flight.service";
 import { MessageService } from './services/message/message.service';
+import { AlertService } from './services/alert/alert.service';
+import { AlertComponent } from './alert/alert.component';
+import { AuthGuard} from './services/auth/auth.guard.service';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
@@ -22,17 +26,22 @@ import { MessageService } from './services/message/message.service';
     HeaderComponent,
     BookingComponent,
     FlightEditComponent,
-    FlightListComponent
+    FlightListComponent,
+    AlertComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,    
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [FlightService,
-              MessageService],
+              MessageService,
+              AlertService,
+              AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,75 +1,88 @@
 <h2>Crear Vuelo</h2>
 <div class="row">
     <div class="col-xs-12">
-        <form [formGroup]="flightForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="flightForm" (ngSubmit)="onSubmit()">                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                        <label for="FlightNumber">ID Vuelo:</label>
+                        <input
+                            type="text"
+                            id="FlightNumber"
+                            formControlName="FlightNumber"
+                            class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                        <label for="Date">Fecha: </label>
+                        <input
+                            type="date"
+                            id="Date"
+                            formControlName="Date"
+                            class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                        <label for="SourceCity">Ciudad Origen: </label>
+                        <input
+                            type="text"
+                            id="SourceCity"
+                            formControlName="SourceCity"
+                            class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                        <label for="DestinationCity">Ciudad Destino: </label>
+                        <input
+                            type="text"
+                            id="DestinationCity"
+                            formControlName="DestinationCity"
+                            class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                        <label for="Chairs">Sillas Disponibles: </label>
+                        <input
+                            type="number"
+                            min="1"
+                            id="Chairs"
+                            formControlName="Chairs"
+                            class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                        <label for="Price">Precio: </label>
+                        <input
+                            type="number"
+                            min="1"
+                            id="Price"
+                            formControlName="Price"
+                            class="form-control">
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <button
                         type="submit"
                         class="btn btn-success"
-                        [disabled]="!flightForm.valid">Save</button>
-                        <button type="button" class="btn btn-danger">Cancel</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                        <label for="flightId">ID Vuelo:</label>
-                        <input
-                            type="text"
-                            id="flightId"
-                            formControlName="flightId"
-                            class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                        <label for="flightDate">Fecha: </label>
-                        <input
-                            type="date"
-                            id="flightDate"
-                            formControlName="flightDate"
-                            class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                        <label for="sourceCity">Ciudad Origen: </label>
-                        <input
-                            type="text"
-                            id="sourceCity"
-                            formControlName="sourceCity"
-                            class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                        <label for="destinationCity">Ciudad Destino: </label>
-                        <input
-                            type="text"
-                            id="destinationCity"
-                            formControlName="destinationCity"
-                            class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                        <label for="chairs">Sillas Disponibles: </label>
-                        <input
-                            type="number"
-                            min="1"
-                            id="chairs"
-                            formControlName="chairs"
-                            class="form-control">
-                        </div>
+                        [disabled]="!flightForm.valid">Guardar</button>
+                        <button type="button" class="btn btn-danger">Cancelar</button>
                     </div>
                 </div>
 

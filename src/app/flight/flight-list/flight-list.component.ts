@@ -15,17 +15,18 @@ export class FlightListComponent implements OnInit , OnDestroy{
   constructor(private flightService: FlightService) { }
 
   ngOnInit() {
-    this.subscription = this.flightService.flightschanged
-    .subscribe(
-      (flights: Flight[]) => {
-        this.flights = flights;
-      }
-    );
-  this.flights = this.flightService.getFlights();
+    this.flightService.getFlights()
+	  .subscribe(
+                data => this.flights = data);
+  
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  onNewFlight(){
+    
   }
 
 }

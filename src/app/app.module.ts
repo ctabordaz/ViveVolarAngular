@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FlightComponent } from './flight/flight.component';
@@ -25,6 +26,7 @@ import {FlightService} from "./services/flight/flight.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,    
     FormsModule,
     ReactiveFormsModule
   ],

@@ -1,7 +1,9 @@
 export class Flight {
-    flightId: string;
-    flightDate: Date;
-    sourceCity: string;
-    destinationCity: string;
-    chairs: number
+    FlightNumber: string;
+    Date: Date;
+    SourceCity: string;
+    DestinationCity: string;
+    Chairs: number;
+    Price: number;
+    UserId: string;
 }

@@ -25,17 +25,22 @@ export class FlightEditComponent implements OnInit {
     let sourceCity = "";
     let destinationCity ="";
     let chairs = 1;
+    let price = 0;
+    let userId = "camilo@taborda.co";
+
     this.flightForm = new FormGroup({
-      'flightId' : new FormControl(flightId, Validators.required),
-      'flightDate' : new FormControl(flightDate, Validators.required),
-      'sourceCity' : new FormControl(sourceCity, Validators.required),
-      'destinationCity' : new FormControl(destinationCity, Validators.required),
-      'chairs' : new FormControl(chairs, Validators.required),
+      'FlightNumber' : new FormControl(flightId, Validators.required),
+      'Date' : new FormControl(flightDate, Validators.required),
+      'SourceCity' : new FormControl(sourceCity, Validators.required),
+      'DestinationCity' : new FormControl(destinationCity, Validators.required),
+      'Chairs' : new FormControl(chairs, Validators.required),
+      'Price' : new FormControl(price, Validators.required),
+      'UserId' : new FormControl(userId, Validators.required),
     });
   }
 
   onSubmit() {
-      this.flightService.addFlight(this.flightForm.value);
+      this.flightService.addFlight(this.flightForm.value).subscribe(s => console.log(s));
   }
 
 }

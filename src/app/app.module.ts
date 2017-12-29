@@ -18,7 +18,7 @@ import { AlertService } from './services/alert/alert.service';
 import { AlertComponent } from './alert/alert.component';
 import { AuthGuard} from './services/auth/auth.guard.service';
 import { LoginComponent } from './login/login.component'
-
+import { AuthenticationService} from './services/auth/authentication.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +41,8 @@ import { LoginComponent } from './login/login.component'
   providers: [FlightService,
               MessageService,
               AlertService,
-              AuthGuard],
+              AuthGuard,
+            AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

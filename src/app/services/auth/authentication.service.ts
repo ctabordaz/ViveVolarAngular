@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AppConfig } from '../../app.config';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { User } from '../../models/user';
 
 @Injectable()
 export class AuthenticationService {
@@ -11,9 +12,12 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string) {
+  login(username: string, password: string):Observable<any> {
+    let user = new User();
+    user.Email = username;
+    user.Password = password;
     let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');    
-    return this.http.post(this.config.apiUrl + '/user/auth', { email: username, password: password },{headers:headers});
+    return this.http.post(this.config.apiUrl + '/api/user/auth', JSON.stringify(user),{headers:headers});
   }
 
   logout() {

@@ -22,7 +22,7 @@ export class FlightListComponent implements OnInit , OnDestroy{
         this.flights = data
       }
       , (error: any)=>{
-        this.alertService.error(error._body);
+        this.alertService.error("Ha ocurrido un error trayendo los vuelos");
         console.log(error);
       });
     

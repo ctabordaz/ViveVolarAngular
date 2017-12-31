@@ -18,19 +18,39 @@ export class FlightService {
   }
 
   getFlights(): Observable<any>{
-    return this.http.get<Flight>(this.config.apiUrl + '/api/flight');
+    let headers ;
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.Token) {
+      headers = new HttpHeaders().set( 'Authorization', 'Bearer ' + currentUser.Token );      
+    }else{
+      headers = new HttpHeaders();
+    }
+     
+    return this.http.get<Flight>(this.config.apiUrl + '/api/flight',{headers: headers});
   }
 
   addFlight(flight: Flight):Observable<any>{   
 
-    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    let headers ;
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.Token) {
+      headers = new HttpHeaders().set( 'Authorization', 'Bearer ' + currentUser.Token ).set('Content-Type', 'application/json; charset=utf-8');      
+    }else{
+      headers =new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    }
      
     return this.http.post(this.config.apiUrl + '/api/flight' ,  JSON.stringify(flight),{headers:headers});
   }
 
   deleteFlight(flightNumber: string){
 
-    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    let headers ;
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.Token) {
+      headers = new HttpHeaders().set( 'Authorization', 'Bearer ' + currentUser.Token ).set('Content-Type', 'application/json; charset=utf-8');      
+    }else{
+      headers =new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    }
     let params = new HttpParams();
     params = params.append('id', flightNumber);
 

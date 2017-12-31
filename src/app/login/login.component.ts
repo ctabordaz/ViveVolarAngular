@@ -37,8 +37,10 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('currentUser', JSON.stringify(data));
                 this.router.navigate([this.returnUrl]);
                 
+              }else{
+                this.alertService.error("Ha ocurrido un error con la autenticación");
               }         
-              this.alertService.error("Ha ocurrido un error con la autenticación");
+              
               this.loading = false;
             },
             (error: HttpErrorResponse) => {

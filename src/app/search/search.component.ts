@@ -12,7 +12,7 @@ import { Flight } from '../models/flight';
 export class SearchComponent implements OnInit {
 
   flights: Flight[]=[];
-  typeList: string = "Admin"
+  typeList: string = "Search"
   constructor(private flightService: FlightService,  private alertService: AlertService) { }
 
   ngOnInit() {

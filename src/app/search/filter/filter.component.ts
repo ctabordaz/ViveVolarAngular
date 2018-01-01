@@ -25,7 +25,7 @@ export class FilterComponent implements OnInit {
 
   initForm(){
     
-    let flightDate = new Date();
+    let flightDate = null;
     let sourceCity = "";
     let destinationCity ="";
     let chairs = 1;

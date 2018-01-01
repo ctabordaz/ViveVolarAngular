@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FlightService } from '../../services/flight/flight.service';
 import { Flight } from '../../models/flight';
 import { Subscription } from 'rxjs/Subscription';
@@ -12,27 +12,14 @@ import { AlertService } from '../../services/alert/alert.service';
 })
 export class FlightListComponent implements OnInit , OnDestroy{
   
-  flights: Flight[];
+  @Input('flights') flights: Flight[]; 
+  @Input('type') typeList: string;
   subscription : Subscription;
   constructor(private flightService: FlightService, private messageService: MessageService, private alertService: AlertService) { }
 
-  ngOnInit() {
-    this.flightService.getFlights()
-    .subscribe(data =>{ 
-        this.flights = data
-      }
-      , (error: any)=>{
-        this.alertService.error("Ha ocurrido un error trayendo los vuelos");
-        console.log(error);
-      });
+  ngOnInit() {    
     
-    this.messageService.listen().subscribe(
-      (flight:any) =>{
-      this.flights.push(flight);
-      }, (error: any)=>{
-        this.alertService.error(error._body);
-        console.log(error);
-      });
+
   
 
   }

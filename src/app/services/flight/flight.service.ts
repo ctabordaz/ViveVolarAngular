@@ -9,6 +9,7 @@ import 'rxjs/add/operator/do';
 import {Flight} from '../../models/flight'
 import { Subject } from 'rxjs/Subject';
 import { AppConfig } from '../../app.config';
+import { FlightSearch } from '../../models/flightSearch';
 @Injectable()
 export class FlightService {
   private config: AppConfig = new AppConfig();
@@ -55,6 +56,18 @@ export class FlightService {
     params = params.append('id', flightNumber);
 
    return this.http.delete(this.config.apiUrl + '/api/flight',{headers:headers, params: params});
+  }
+
+  searchFlights(flightSearch: FlightSearch): Observable<any>{
+    let headers ;
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.Token) {
+      headers = new HttpHeaders().set( 'Authorization', 'Bearer ' + currentUser.Token ).set('Content-Type', 'application/json; charset=utf-8');      
+    }else{
+      headers =new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    }
+     
+    return this.http.post(this.config.apiUrl + '/api/flight/search' ,  JSON.stringify(flightSearch),{headers:headers});
   }
 
 }

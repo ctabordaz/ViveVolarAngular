@@ -19,6 +19,8 @@ import { AlertComponent } from './alert/alert.component';
 import { AuthGuard} from './services/auth/auth.guard.service';
 import { LoginComponent } from './login/login.component'
 import { AuthenticationService} from './services/auth/authentication.service';
+import { SearchComponent } from './search/search.component';
+import { FilterComponent } from './search/filter/filter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,9 @@ import { AuthenticationService} from './services/auth/authentication.service';
     FlightEditComponent,
     FlightListComponent,
     AlertComponent,
-    LoginComponent
+    LoginComponent,
+    SearchComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

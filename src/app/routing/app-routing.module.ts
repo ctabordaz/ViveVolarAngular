@@ -5,12 +5,15 @@ import {FlightComponent} from '../flight/flight.component';
 import {BookingComponent} from '../booking/booking.component';
 import {LoginComponent} from '../login/login.component'
 import { AuthGuard } from '../services/auth/auth.guard.service';
+import { SearchComponent } from '../search/search.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/search', pathMatch: 'full' },
   { path: 'flight', component: FlightComponent, canActivate: [AuthGuard]  },
-  { path: 'booking', component: BookingComponent },
+  { path: 'booking', component: BookingComponent,canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent },
   { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

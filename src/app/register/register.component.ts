@@ -23,14 +23,14 @@ export class RegisterComponent implements OnInit {
 
 
   register(){
-    this.user.Rol = "Cliente";
+    this.user.Rol = "Customer";
     this.authenticationService.register(this.user).subscribe(
       data =>{
         this.alertService.success('Registro exitoso', true);
         this.router.navigate(['/login']);
       },
       error =>{
-        this.alertService.error('Ha ocurrdio un error con el servicio');
+        this.alertService.error('Ha ocurrdio un error con el servicio: '+ error.error);
       }
     );
   }

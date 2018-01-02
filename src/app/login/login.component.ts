@@ -5,6 +5,7 @@ import { AlertService} from '../services/alert/alert.service'
 import { AuthenticationService} from '../services/auth/authentication.service'
 import { User } from '../models/user';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MessageService } from '../services/message/message.service';
 
 @Component({
   selector: 'app-login',
@@ -20,11 +21,13 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
      this.authenticationService.logout();
+     this.messageService.recive(true);
      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/search';
   }
 
@@ -40,7 +43,7 @@ export class LoginComponent implements OnInit {
               }else{
                 this.alertService.error("Ha ocurrido un error con la autenticación");
               }         
-              
+              this.messageService.recive(true);
               this.loading = false;
             },
             (error: HttpErrorResponse) => {

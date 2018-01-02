@@ -22,7 +22,7 @@ export class BookingComponent implements OnInit {
         this.bookings = data;
       },
       error =>{
-        
+        this.alertService.error("Ha ocurrido un error cargando las reservas")
       }
     )
   }

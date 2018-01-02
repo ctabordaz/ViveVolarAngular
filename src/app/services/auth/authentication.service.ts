@@ -25,4 +25,11 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
   } 
 
+  register(user: User):Observable<any>{
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');  
+      
+    return this.http.post(this.config.apiUrl + '/api/user', JSON.stringify(user),{headers:headers});
+  }
+
 }

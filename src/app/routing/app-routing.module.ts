@@ -6,6 +6,7 @@ import {BookingComponent} from '../booking/booking.component';
 import {LoginComponent} from '../login/login.component'
 import { AuthGuard } from '../services/auth/auth.guard.service';
 import { SearchComponent } from '../search/search.component';
+import { RegisterComponent } from '../register/register.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/search', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
   { path: 'booking', component: BookingComponent,canActivate: [AuthGuard] },
   { path: 'search', component: SearchComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '**', redirectTo: '' }
 ];
 

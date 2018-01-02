@@ -23,6 +23,7 @@ import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './search/filter/filter.component';
 import { BookingService } from './services/booking/booking.service';
 import { BookingListComponent } from './booking/booking-list/booking-list.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { BookingListComponent } from './booking/booking-list/booking-list.compon
     LoginComponent,
     SearchComponent,
     FilterComponent,
-    BookingListComponent
+    BookingListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../services/message/message.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  login: string = "Login";
+  constructor(private messageService: MessageService) { }
 
   ngOnInit() {
+    if(localStorage.getItem('currentUser')){
+      this.login = "Logout"
+    }else{
+      this.login = "Login";
+    }
+    this.messageService.listen().subscribe(
+      data =>{
+        if(localStorage.getItem('currentUser')){
+          this.login = "Logout"
+        }else{
+          this.login = "Login";
+        }
+      },
+      error =>{
+
+      }
+    );
   }
 
 }

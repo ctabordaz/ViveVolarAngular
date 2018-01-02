@@ -44,7 +44,7 @@ export class FlightListComponent implements OnInit , OnDestroy{
         }, 
         error => {
           console.log("no deleted");
-          this.alertService.error(error._body);
+          this.alertService.error("Error eliminando el vuelo");
         })
     }
     bookingFlight(flightNumber: string, index: number){

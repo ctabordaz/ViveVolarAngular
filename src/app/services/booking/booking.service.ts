@@ -34,4 +34,19 @@ export class BookingService {
 
     return this.http.get<Booking>(this.config.apiUrl + '/api/booking/getByUser',{headers: headers, params: params});
   }
+
+  deleteFlight(bookingid: string){
+    
+    let headers ;
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.Token) {
+      headers = new HttpHeaders().set( 'Authorization', 'Bearer ' + currentUser.Token ).set('Content-Type', 'application/json; charset=utf-8');      
+    }else{
+      headers =new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    }
+    let params = new HttpParams();
+    params = params.append('id', bookingid);
+
+    return this.http.delete(this.config.apiUrl + '/api/booking',{headers:headers, params: params});
+  }
 }

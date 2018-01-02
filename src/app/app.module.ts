@@ -24,6 +24,7 @@ import { FilterComponent } from './search/filter/filter.component';
 import { BookingService } from './services/booking/booking.service';
 import { BookingListComponent } from './booking/booking-list/booking-list.component';
 import { RegisterComponent } from './register/register.component';
+import { MenuGuard } from './services/auth/menu.guard.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { RegisterComponent } from './register/register.component';
               AlertService,
               AuthGuard,
               AuthenticationService,
-              BookingService],
+              BookingService,
+              MenuGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

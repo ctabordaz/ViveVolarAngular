@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../services/alert/alert.service';
+import { BookingService } from '../services/booking/booking.service';
+import { Booking } from '../models/booking';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-booking',
@@ -8,9 +11,20 @@ import { AlertService } from '../services/alert/alert.service';
 })
 export class BookingComponent implements OnInit {
 
-  constructor( private alertService: AlertService) { }
+  bookings: Booking[];
+  constructor( private alertService: AlertService,
+    private bookingService:BookingService) { }
 
   ngOnInit() {
+    let currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
+    this.bookingService.getBookingById(currentUser.Email).subscribe(
+      data => {
+        this.bookings = data;
+      },
+      error =>{
+        
+      }
+    )
   }
 
 }

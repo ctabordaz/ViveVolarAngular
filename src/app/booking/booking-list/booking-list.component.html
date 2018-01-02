@@ -1,0 +1,35 @@
+
+<div class="row">
+    <h2>Mis Reservas</h2>
+    <div  class="col-xs-12">
+     <table  class="table table-bordered">
+       <thead>
+         <tr>
+            <th>Número de Reserva</th>
+            <th >Vuelo Id</th>
+            <th>Fecha</th>
+            <th>Ciudad Origen</th>
+            <th>Ciudad Destino</th>
+            <th>Sillas</th>
+            <th>Precio</th>
+            <th></th>
+         </tr>      
+       </thead>
+       <tbody>
+         <tr *ngFor="let booking of bookings; let i = index">
+           <td>{{booking.Id}}</td>
+           <td>{{booking.Flight.FlightNumber}}</td>
+           <td>{{booking.Flight.Date  | date: 'dd/MM/yyyy'}}</td>
+           <td>{{booking.Flight.SourceCity}}</td>
+           <td>{{booking.Flight.DestinationCity}}</td>
+           <td>{{booking.Flight.Chairs}}</td>
+           <td>{{booking.Flight.Price | currency:'USD'}}</td>
+           <td> <span class="glyphicon glyphicon-trash pointer" aria-hidden="true" (click)="deleteFlight(booking.Id,i)"></span></td>
+         </tr>
+       </tbody>
+     </table>
+     <!--<div  class='alert alert-info'>No hay vuelos disponibles</div>-->
+  
+    </div>
+  </div>
+  

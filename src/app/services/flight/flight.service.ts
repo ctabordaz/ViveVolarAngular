@@ -12,6 +12,7 @@ import { AppConfig } from '../../app.config';
 import { FlightSearch } from '../../models/flightSearch';
 @Injectable()
 export class FlightService {
+  
   private config: AppConfig = new AppConfig();
 
   constructor(public http: HttpClient) { 

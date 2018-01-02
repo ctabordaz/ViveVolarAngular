@@ -18,13 +18,13 @@
      <tbody>
        <tr *ngFor="let flight of flights; let i = index">
          <td>{{flight.FlightNumber}}</td>
-         <td>{{flight.Date}}</td>
+         <td>{{flight.Date  | date: 'dd/MM/yyyy'}}</td>
          <td>{{flight.SourceCity}}</td>
          <td>{{flight.DestinationCity}}</td>
          <td>{{flight.Chairs}}</td>
          <td>{{flight.Price | currency:'USD'}}</td>
-         <td *ngIf="typeList == 'Search'"> <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></td>
-         <td *ngIf="typeList == 'Admin'"> <span class="glyphicon glyphicon-trash" aria-hidden="true" (click)="deleteFlight(flight.FlightNumber,i)"></span></td>
+         <td *ngIf="typeList == 'Search'"> <span class="glyphicon glyphicon-calendar pointer" aria-hidden="true" (click)="bookingFlight(flight.FlightNumber,i)"></span></td>
+         <td *ngIf="typeList == 'Admin'"> <span class="glyphicon glyphicon-trash pointer" aria-hidden="true" (click)="deleteFlight(flight.FlightNumber,i)"></span></td>
        </tr>
      </tbody>
    </table>

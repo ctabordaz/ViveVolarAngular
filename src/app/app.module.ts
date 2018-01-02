@@ -21,6 +21,9 @@ import { LoginComponent } from './login/login.component'
 import { AuthenticationService} from './services/auth/authentication.service';
 import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './search/filter/filter.component';
+import { BookingService } from './services/booking/booking.service';
+import { BookingListComponent } from './booking/booking-list/booking-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,8 @@ import { FilterComponent } from './search/filter/filter.component';
     AlertComponent,
     LoginComponent,
     SearchComponent,
-    FilterComponent
+    FilterComponent,
+    BookingListComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,8 @@ import { FilterComponent } from './search/filter/filter.component';
               MessageService,
               AlertService,
               AuthGuard,
-            AuthenticationService],
+              AuthenticationService,
+              BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
